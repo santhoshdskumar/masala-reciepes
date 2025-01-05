@@ -19,15 +19,14 @@ jobs:
         run: docker push santhoshds413/masala-recieps:latest   
 
 
-  deploy:
+  deploy: 
     needs: build
-    runs-on: aws-ec2
+    runs-on: aws-ec2    
     steps:
-      - name: Pull image from Docker Hub
-        run: docker pull santhoshds413/masala-recieps:latest
-      - name: Delete existing container
-        run: docker rm -f masala-recieps
-      - name: Run container
-        run: docker run -d -p 3000:80 --name reactContainer santhoshds413/masala-recieps:latest
-
+      - name: Pull image from docker hub
+        run: docker pull santhoshds413/masala-recieps:latest 
+      - name: Delete Old Container
+        run: docker rm -f reactContainer
+      - name: Run docker container
+        run: docker run -d -p 3000:80 --name reactContainer santhoshds413/masala-recieps   
 
